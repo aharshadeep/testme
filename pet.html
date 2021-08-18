@@ -1,0 +1,88 @@
+<html>
+	<head>
+		
+		<title>Student Results</title>
+
+		<script type="text/javascript">
+		
+		function getReport(){
+
+					var grade = "";	 //declare a variable for grade
+					var  result="";	 //declare a variable for result
+
+					//read the marks
+					var engMarks = document.getElementById('txtEnglish').value;
+					var kannadaMarks = document.getElementById('txtKannada').value;
+					var mathsMarks = document.getElementById('txtMaths').value;
+					// var scienceMarks = document.getElementById('txtScience').value;
+					
+					//calculate the total marks (using double notation technique)
+					var totalMarks = engMarks - (- kannadaMarks) - (- mathsMarks);
+					
+					//get the average marks
+					var averageMarks = Math.round( totalMarks / 3);					
+					
+					//find the grade and result using the ternary operator inside the switch statement					
+					switch(
+					
+							//usage of ternary operator inside switch
+
+                            (averageMarks < 1000 ) ? 1 : 
+							(averageMarks > 600 && averageMarks <= 1000) ? 2 : 
+							(averageMarks > 500 && averageMarks < 600) ? 3 : 
+							(averageMarks > 400 && averageMarks < 500) ? 4 : 
+                            (averageMarks > 300 && averageMarks < 400) ? 5 : 
+                            (averageMarks > 200 && averageMarks < 300) ? 6 : 0
+						  )
+							
+							{
+                                case 0 :grade = "2,00,000"; result="Fail";break;
+                                case 1 :grade = "N/A"; result="Call us";break;
+								case 2 :grade = "5,00,000";result="First Class";break;
+								case 3 :grade = "4,00,000"; result="Second Class";break;
+								case 4 :grade = "3,50,000"; result="Third Class";break;
+								case 5 :grade = "3,00,000"; result="Fouth Class";break;
+                                case 6 :grade = "2,50,000"; result="Fifth Class";break;
+							
+							}
+							
+						
+					//display the results	
+					// document.getElementById('txtStudentName').value = document.getElementById('txtName').value;
+					// document.getElementById('txtStudentClass').value = document.getElementById('txtClass').value;
+					document.getElementById('txtTotalMarks').value = totalMarks;
+					document.getElementById('txtAvgMarks').value = averageMarks;
+					document.getElementById('txtGrade').value = grade;
+					document.getElementById('txtResult').value = result;
+		
+		} //end of function getReport
+		
+		</script>
+	</head>
+	<body>		
+			<fieldset style="width:600px">
+	    		<!-- <legend><b>Get Solar Quotation</b></legend>
+				Name:<input type="text" id="txtName"> &nbsp;&nbsp;
+				Class:<input type="text" id="txtClass"> <br/><br/> -->
+				<table border="1">
+                    <tr><td>Units of Last Month</td><td><input type="text" id="txtEnglish"></td></tr>
+					<tr><td>Units of Last Second Month</td><td><input type="text" id="txtKannada"></td></tr>
+                    <tr><td>Units of Last Third Month</td><td><input type="text" id="txtMaths"></td></tr>
+					<!-- <tr><td>Science</td><td><input type="text" id="txtScience"></td></tr>				 -->
+				</table><br/><br/>
+				<input type="button" value="Get Result" onClick="getReport();">
+			</fieldset>
+			
+				<h4>Details</h4>
+				
+				<table border="1">
+					<!-- <tr><td>Name</td><td><input type="text" id="txtStudentName" readonly></td></tr>
+					<tr><td>Class</td><td><input type="text" id="txtStudentClass" readonly></td></tr> -->
+					<tr><td>Total Units</td><td><input type="text" id="txtTotalMarks" readonly></td></tr>
+					<tr><td>Average Units</td><td><input type="text" id="txtAvgMarks" readonly></td></tr>
+					<tr><td>Approx Price</td><td><input type="text" id="txtGrade" readonly></td></tr>
+					<tr><td>Remarks</td><td><input type="text" id="txtResult" readonly></td></tr>
+				</table>
+			
+	</body>
+</html>
